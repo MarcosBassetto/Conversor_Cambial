@@ -1,0 +1,12 @@
+SET DEFAULT TO 'C:\Users\marcos.bassetto\Desktop\desafio\conversaoCambial\Conversor_Cambial'
+
+SET SYSMENU off
+SET CURRENCY TO ','
+SET DECIMALS TO 10
+
+
+_screen.WindowState = 2 
+_screen.Caption = 'Conversor de Cambio'
+
+SET PROCEDURE TO 'prg\prgbasecalculo'
+DO FORM frm\frmcambio

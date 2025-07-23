@@ -1,0 +1,16 @@
+
+lMoedaEdit = '"' + SUBSTR(thisform.cboMoeda.Value, 1, 3) + '":'  
+
+lTabelaCambio = CREATEOBJECT("WinHttp.WinHttpRequest.5.1")
+lTabelaCambio.Open("GET", "https://open.er-api.com/v6/latest/BRL", .F.)
+lTabelaCambio.Send()
+lTabelaCambio = lTabelaCambio.ResponseText
+
+lnPosicaoInit = AT(lMoedaEdit, lTabelaCambio) + LEN(lMoedaEdit)
+lnPosicaoFin = AT(',', SUBSTR(lTabelaCambio, lnPosicaoInit)) - 1
+
+lTabelaCambio = SUBSTR(lTabelaCambio, lnPosicaoInit , lnPosicaoFin )
+
+lTabelaCambio = STRTRAN(lTabelaCambio, ".",",")
+
+thisform.txtResult.Value = ROUND(thisform.txtValor.Value * VAL(lTabelaCambio),2)

@@ -1,0 +1,32 @@
+MESSAGEBOX(getBaseCalculo('USD', 100))
+FUNCTION getBaseCalculo(simbolo, valor)
+	lcTabeladecalculo = getWebService()
+	lnPosicaoIni = posicaoIni(simbolo, lcTabeladecalculo)
+	lcValor = SUBSTR(lcTabeladecalculo, lnPosicaoIni+5)
+	lnPosicaoFim = posicaofinal(',',lcValor)
+	lcValor = SUBSTR(lcValor,1 , lnPosicaoFim-1)
+	
+	RETURN 	VAL(STRTRAN(lcValor ,".",","))
+endfunc	
+
+FUNCTION getWebService()
+	LOCAL loTabeladecalculo, lcTabeladecalculotxt
+	loTabeladecalculo = CREATEOBJECT("WinHttp.WinHttpRequest.5.1")
+	loTabeladecalculo.Open("GET", "https://open.er-api.com/v6/latest/BRL", .F.)
+	loTabeladecalculo.Send()
+	lcTabeladecalculotxt  = loTabeladecalculo.ResponseText
+	
+	
+	RETURN lcTabeladecalculotxt 
+ENDFUNC
+
+FUNCTION posicaoIni(moeda, tabela)
+	lnposicaoIni = AT(moeda, tabela)
+	RETURN lnposicaoIni 
+ENDFUNC
+
+FUNCTION posicaofinal(marcador, tabela)
+	lnposicaoIni = AT(marcador, tabela)
+	RETURN lnposicaoIni 
+ENDFUNC
+
