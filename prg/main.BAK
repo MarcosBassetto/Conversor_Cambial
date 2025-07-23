@@ -2,6 +2,7 @@ SET DEFAULT TO 'C:\Users\marcos.bassetto\Desktop\desafio\conversaoCambial\Conver
 
 SET SYSMENU off
 SET CURRENCY TO ','
+SET POINT TO ','
 SET DECIMALS TO 10
 
 

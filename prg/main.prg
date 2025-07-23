@@ -5,7 +5,7 @@ SET CURRENCY TO ','
 SET POINT TO ','
 SET DECIMALS TO 10
 
-
+_screen.Icon = 'C:\USERS\MARCOS.BASSETTO\DESKTOP\DESAFIO\CONVERSAOCAMBIAL\CONVERSOR_CAMBIAL\IMG\ICON.ICO'
 _screen.WindowState = 2 
 _screen.Caption = 'Conversor de Cambio'
 
